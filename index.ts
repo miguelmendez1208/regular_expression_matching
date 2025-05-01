@@ -1,16 +1,16 @@
 function isMatch(s: string, p: string): boolean {
     let states:string[] = [];
     let curr="";
-    let try_last ="";
+    let prev_state ="";
     for (let i=p.length-1;i>=0;i--){
         curr = p[i] + curr;
         if(curr!=="*"){
-            if(curr.length>1 && curr===try_last){
+            if(curr.length>1 && curr===prev_state){
                 curr="";
                 continue;
             }
             states.unshift(curr);
-            try_last=curr;
+            prev_state=curr;
             curr = "";
         }
     }
